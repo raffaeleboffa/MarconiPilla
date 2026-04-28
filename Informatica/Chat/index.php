@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    require_once 'manager.php';
 
     if (isset($_SESSION['user_id'])) {
         header('Location: chat.php');
@@ -11,17 +11,15 @@
         $token = trim($_POST['token']);
 
         if (strlen($email) > 0 && strlen($token) > 0) {
-            $message = "Inserisci solo l'indirizzo email o token privato di accesso.";
+            $_SESSION['message'] = "Inserisci solo l'indirizzo email o token privato di accesso.";
         } else if (strlen($email) == 0 && strlen($token) == 0) {
-            $message = "Inserisci un indirizzo email o token privato di accesso.";
+            $_SESSION['message'] = "Inserisci un indirizzo email o token privato di accesso.";
         } else {
-            require_once 'manager.php';
-
             if (strlen($email) > 0) {
                 if (sendMail($email)) {
-                    $message = "Email inviata con successo. Controlla la tua casella di posta e accedi con il token di accesso.";
+                    $_SESSION['message'] = "Email inviata con successo. Controlla la tua casella di posta e accedi con il token di accesso.";
                 } else {
-                    $message = "Si è verificato un errore durante l'invio dell'email.";
+                    $_SESSION['message'] = "Si è verificato un errore durante l'invio dell'email.";
                 }
             } else {
                 $token = explode("#", $token);
@@ -32,13 +30,18 @@
                         header('Location: chat.php');
                         exit();
                     } else {
-                        $message = "Token privato di accesso non valido.";
+                        $_SESSION['message'] = "Token privato di accesso non valido.";
                     }
                 } else {
-                    $message = "Utente non trovato.";
+                    $_SESSION['message'] = "Utente non trovato.";
                 }
             }
         }
+    }
+
+    if (isset($_SESSION['message'])) {
+        $message = $_SESSION['message'];
+        unset($_SESSION['message']);
     }
 ?>
 
@@ -62,6 +65,7 @@
                 <input type="submit" name="login" value="Accedi">
             </form>
         </div>
+        
         <?php 
             if (isset($message)) {
                 echo "<div class='notifica'>" . $message . "</div>";
