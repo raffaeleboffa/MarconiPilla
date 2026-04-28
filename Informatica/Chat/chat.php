@@ -1,6 +1,4 @@
 <?php
-    session_start();
-
     require_once 'manager.php';
 
     if (!isset($_SESSION['user_id'])) {
@@ -30,6 +28,11 @@
 
         $contatti[] = prepareQuery("SELECT id, nome, cognome, username, bio, profilo FROM utenti WHERE id = :id", [":id" => $id_contatti[count($id_contatti) - 1]])[0];
     }
+
+    if (isset($_SESSION['message'])) {
+        $message = $_SESSION['message'];
+        unset($_SESSION['message']);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +47,8 @@
     <body>
         <div class="modal" id="modal_profilo">
             <div class="modal_content">
-                <form method="post">
+                <form method="post" action="manager.php" enctype="multipart/form-data">
+                    <input type="hidden" name="action" value="update_profile">
                     <p>Nome:</p>
                     <input type="text" name="nome" value="<?php echo $user['nome']; ?>">
                     <p>Cognome:</p>
@@ -56,8 +60,8 @@
                     <p>Bio:</p>
                     <textarea name="bio"><?php echo $user['bio']; ?></textarea>
                     <p>Profilo:</p>
-                    <input type="file" name="profilo">
-                    <input type="submit" value="Salva">
+                    <input type="file" name="profilo" accept="image/*">
+                    <button type="submit">Salva</button>
                 </form>
                 <button onclick="closeModal('modal_profilo')">Chiudi</button>
             </div>
@@ -96,6 +100,11 @@
 
         <div class="chat"></div>
 
+        <?php 
+            if (isset($message)) {
+                echo "<div class='notifica'>" . $message . "</div>";
+            }
+        ?>
         <script src="js/chat.js"></script>
     </body>
 </html>
