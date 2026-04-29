@@ -9,26 +9,6 @@
     $user_id = $_SESSION['user_id'];
     $user = prepareQuery("SELECT * FROM utenti WHERE id = :id", [":id" => $user_id])[0];
 
-    $messaggi = prepareQuery("SELECT * FROM messaggi WHERE destinatario = :destinatario OR mittente = :mittente ORDER BY data DESC", [
-        ":destinatario" => $user_id,
-        ":mittente" => $user_id
-    ]);
-
-    $id_contatti = [];
-    $contatti = [];
-
-    foreach ($messaggi as $messaggio) {
-        if ($messaggio['mittente'] == $user_id && !in_array($messaggio['destinatario'], $id_contatti)) {
-            $id_contatti[] = $messaggio['destinatario'];
-        } else if ($messaggio['destinatario'] == $user_id && !in_array($messaggio['mittente'], $id_contatti)) {
-            $id_contatti[] = $messaggio['mittente'];
-        } else {
-            continue;
-        }
-
-        $contatti[] = prepareQuery("SELECT id, nome, cognome, username, bio, profilo FROM utenti WHERE id = :id", [":id" => $id_contatti[count($id_contatti) - 1]])[0];
-    }
-
     if (isset($_SESSION['message'])) {
         $message = $_SESSION['message'];
         unset($_SESSION['message']);
@@ -76,26 +56,7 @@
                 <input type="text" placeholder="Cerca contatti...">
                 <button>Cerca</button>
             </div>
-            <div class="contatti">
-                <?php foreach ($contatti as $contatto): ?>
-                    <div class="contatto">
-                        <img class="profilo" src="storage/img/profili/<?php echo $contatto['profilo']; ?>" onclick="openModal('modal_<?php echo $contatto['id']; ?>')">
-                        <div class="text_contatto">
-                            <p class="nome"><?php echo $contatto['nome'] . " " . $contatto['cognome']; ?></p>
-                            <p class="username"><?php echo $contatto['username']; ?></p>
-                        </div>
-                    </div>
-                    <div class="modal" id="modal_<?php echo $contatto['id']; ?>">
-                        <div class="modal_content">
-                            <img class="profilo" src="storage/img/profili/<?php echo $contatto['profilo']; ?>">
-                            <p class="nome"><?php echo $contatto['nome'] . " " . $contatto['cognome']; ?></p>
-                            <p class="username"><?php echo $contatto['username']; ?></p>
-                            <p class="bio"><?php echo $contatto['bio']; ?></p>
-                            <button onclick="closeModal('modal_<?php echo $contatto['id']; ?>')">Chiudi</button>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+            <div class="contatti" id="contatti"></div>
         </div>
 
         <div class="chat"></div>
