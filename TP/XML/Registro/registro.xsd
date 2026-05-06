@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.example.org/registroInsegnante"
+           xmlns:tns="http://www.example.org/registroInsegnante"
+           elementFormDefault="qualified">
+
+    <xs:element name="registro" type="tns:RegistroType"/>
+
+    <xs:complexType name="RegistroType">
+        <xs:sequence>
+            <xs:element name="studente" type="tns:StudenteType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="StudenteType">
+        <xs:sequence>
+            <xs:element name="nome" type="xs:string"/>
+            <xs:element name="cognome" type="xs:string"/>
+            <xs:element name="classe" type="xs:string"/>
+            <xs:element name="assenze" type="tns:AssenzeType" minOccurs="0"/>
+            <xs:element name="valutazioni" type="tns:ValutazioniType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AssenzeType">
+        <xs:sequence>
+            <xs:element name="data" type="xs:date" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ValutazioniType">
+        <xs:sequence>
+            <xs:element name="valutazione" type="tns:ValutazioneType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ValutazioneType">
+        <xs:sequence>
+            <xs:element name="data" type="xs:date"/>
+            <xs:element name="tipologia" type="tns:TipologiaType"/>
+            <xs:element name="punteggio" type="tns:PunteggioType"/>
+            <xs:element name="voto" type="tns:VotoType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="TipologiaType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="scritta"/>
+            <xs:enumeration value="orale"/>
+            <xs:enumeration value="pratica"/>
+            <xs:enumeration value="test"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="PunteggioType">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0.00"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="VotoType">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0.00"/>
+            <xs:maxInclusive value="10.00"/>
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

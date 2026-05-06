@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GestioneProgetti xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="progetti.xsd">
+  
+  <Progetto>
+    <Denominazione>Sviluppo App Mobile</Denominazione>
+    <Team>
+      <Persona>
+        <Cognome>Rossi</Cognome>
+        <Nome>Mario</Nome>
+      </Persona>
+      <Persona>
+        <Cognome>Verdi</Cognome>
+        <Nome>Luigi</Nome>
+      </Persona>
+    </Team>
+    <Budget>15000.00</Budget>
+    <ElencoAttivita>
+      <Attivita>
+        <Descrizione>Analisi dei requisiti</Descrizione>
+        <Scadenza>2024-06-30</Scadenza>
+        <Avanzamento>100</Avanzamento>
+        <Priorita>ALTA</Priorita>
+      </Attivita>
+      <Attivita>
+        <Descrizione>Sviluppo Interfaccia UI</Descrizione>
+        <Scadenza>2024-09-15</Scadenza>
+        <Avanzamento>45</Avanzamento>
+        <Priorita>MEDIA</Priorita>
+      </Attivita>
+    </ElencoAttivita>
+  </Progetto>
+
+  <Progetto>
+    <Denominazione>Campagna Marketing</Denominazione>
+    <Team>
+      <Persona>
+        <Cognome>Bianchi</Cognome>
+        <Nome>Anna</Nome>
+      </Persona>
+    </Team>
+    <Budget>5000.50</Budget>
+    <ElencoAttivita>
+      <Attivita>
+        <Descrizione>Creazione contenuti social</Descrizione>
+        <Scadenza>2024-05-20</Scadenza>
+        <Avanzamento>10</Avanzamento>
+        <Priorita>BASSA</Priorita>
+      </Attivita>
+    </ElencoAttivita>
+  </Progetto>
+
+</GestioneProgetti>

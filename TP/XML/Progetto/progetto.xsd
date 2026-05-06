@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:simpleType name="tipoPriorita">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ALTA"/>
+      <xs:enumeration value="MEDIA"/>
+      <xs:enumeration value="BASSA"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="GestioneProgetti">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Progetto" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Denominazione" type="xs:string"/>
+              
+              <xs:element name="Team">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Persona" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Cognome" type="xs:string"/>
+                          <xs:element name="Nome" type="xs:string"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+              <xs:element name="Budget" type="xs:decimal"/>
+
+              <xs:element name="ElencoAttivita">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Attivita" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Descrizione" type="xs:string"/>
+                          <xs:element name="Scadenza" type="xs:date"/>
+                          <xs:element name="Avanzamento">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:integer">
+                                <xs:minInclusive value="0"/>
+                                <xs:maxInclusive value="100"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="Priorita" type="tipoPriorita"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

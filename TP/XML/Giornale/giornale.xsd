@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="giornale">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="articolo" type="ArticoloType" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="nome" type="xs:string" use="required"/>
+      <xs:attribute name="data" type="xs:date" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="ArticoloType">
+    <xs:sequence>
+      <xs:element name="titolo" type="xs:string"/>
+      <xs:element name="sottotitolo" type="xs:string"/>
+      <xs:element name="intestazione" type="xs:string"/>
+      <xs:element name="autore" type="xs:string"/>
+      <xs:element name="data" type="xs:date"/>
+      <xs:element name="corpo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="paragrafo" type="ParagrafoType" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="ParagrafoType" mixed="true">
+    <xs:attribute name="numero" type="xs:positiveInteger" use="required"/>
+  </xs:complexType>
+
+</xs:schema>

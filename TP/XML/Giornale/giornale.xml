@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<giornale nome="Il Quotidiano" data="2024-03-15" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="giornale.xsd">
+
+  <articolo id="a1">
+    <titolo>Nuovo parco cittadino inaugurato in centro</titolo>
+    <sottotitolo>Un'area verde di 10.000 mq a disposizione dei quartieri</sottotitolo>
+    <intestazione>Dopo due anni di lavori, apre al pubblico il parco della Rimembranza</intestazione>
+    <autore>Mario Rossi</autore>
+    <data>2024-03-14</data>
+    <corpo>
+      <paragrafo numero="1">
+        È stata inaugurata questa mattina la nuova area verde nel cuore della città. 
+        Alla cerimonia hanno preso parte il sindaco e numerosi cittadini.
+      </paragrafo>
+      <paragrafo numero="2">
+        Il parco dispone di percorsi pedonali, aree gioco per bambini e una 
+        zona dedicata allo sport all'aperto. L'opera è costata 2 milioni di euro.
+      </paragrafo>
+      <paragrafo numero="3">
+        "Un giorno storico per la nostra comunità", ha dichiarato il primo cittadino. 
+        "Questo parco restituisce qualità della vita a tutto il quartiere".
+      </paragrafo>
+    </corpo>
+  </articolo>
+
+  <articolo id="a2">
+    <titolo>Campionato regionale: la squadra locale vola in finale</titolo>
+    <sottotitolo>Netto 3-0 contro i rivali storici</sottotitolo>
+    <intestazione>Prestazione perfetta dei ragazzi dell'allenatore Bianchi</intestazione>
+    <autore>Laura Verdi</autore>
+    <data>2024-03-14</data>
+    <corpo>
+      <paragrafo numero="1">
+        Una partita mai in discussione quella disputata ieri sera allo stadio comunale. 
+        I padroni di casa hanno dominato dal primo all'ultimo minuto.
+      </paragrafo>
+      <paragrafo numero="2">
+        Decisive le reti di Caputo al 12', Esposito al 38' e Romagnoli al 72'. 
+        Ora l'avversaria in finale sarà la vincente dell'altro semifinale.
+      </paragrafo>
+    </corpo>
+  </articolo>
+
+</giornale>

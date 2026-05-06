@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:registro xmlns:tns="http://www.example.org/registroInsegnante"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.example.org/registroInsegnante registro.xsd">
+
+    <tns:studente>
+        <tns:nome>Luca</tns:nome>
+        <tns:cognome>Bianchi</tns:cognome>
+        <tns:classe>5A</tns:classe>
+        <tns:assenze>
+            <tns:data>2025-03-10</tns:data>
+            <tns:data>2025-04-02</tns:data>
+        </tns:assenze>
+        <tns:valutazioni>
+            <tns:valutazione>
+                <tns:data>2025-02-15</tns:data>
+                <tns:tipologia>orale</tns:tipologia>
+                <tns:punteggio>8.50</tns:punteggio>
+                <tns:voto>8.50</tns:voto>
+            </tns:valutazione>
+            <tns:valutazione>
+                <tns:data>2025-03-20</tns:data>
+                <tns:tipologia>scritta</tns:tipologia>
+                <tns:punteggio>7.25</tns:punteggio>
+                <tns:voto>7.25</tns:voto>
+            </tns:valutazione>
+        </tns:valutazioni>
+    </tns:studente>
+
+    <tns:studente>
+        <tns:nome>Giulia</tns:nome>
+        <tns:cognome>Verdi</tns:cognome>
+        <tns:classe>5A</tns:classe>
+        <tns:valutazioni>
+            <tns:valutazione>
+                <tns:data>2025-03-18</tns:data>
+                <tns:tipologia>test</tns:tipologia>
+                <tns:punteggio>9.00</tns:punteggio>
+                <tns:voto>9.00</tns:voto>
+            </tns:valutazione>
+        </tns:valutazioni>
+    </tns:studente>
+
+</tns:registro>
