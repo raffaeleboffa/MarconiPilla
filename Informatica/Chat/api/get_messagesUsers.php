@@ -1,4 +1,5 @@
 <?php
+    header('Content-Type: application/json');
     require_once '../manager.php';
 
     if (!isset($_SESSION['user_id'])) {
@@ -14,6 +15,7 @@
     $u = prepareQuery("SELECT id, nome, cognome, username, bio, profilo FROM utenti");
 
     $json = [
+        "id" => $user_id,
         "messaggi" => [],
         "utenti" => []
     ];
