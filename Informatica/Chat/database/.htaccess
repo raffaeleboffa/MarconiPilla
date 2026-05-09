@@ -1,6 +1,0 @@
-Require all denied
-# (Per versioni molto vecchie di Apache usa: Order deny,allow / Deny from all)
-
-<FilesMatch "^\.">
-    Require all denied
-</FilesMatch>
